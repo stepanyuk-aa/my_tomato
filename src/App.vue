@@ -1,28 +1,43 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <NavigationPanel></NavigationPanel>
+    <div class="WorkSpace">
+      <h1>Hello</h1>
+    </div>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import NavigationPanel from "@/components/NavigationPanel";
+
+
 
 export default {
   name: 'App',
+  data() {
+    return {
+      title: "Hello!"
+    }
+  },
   components: {
-    HelloWorld
-  }
+    NavigationPanel,
+  },
+  methods: {
+
+  },
 }
+
+
 </script>
 
 <style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  background: #F5F5F5;
+  display: flex;
+}
+
+div.WorkSpace {
+  padding: 1px 16px;
+  height: 1000px;
 }
 </style>
