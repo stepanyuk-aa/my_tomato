@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <NavigationPanel></NavigationPanel>
+      <NavigationPanel></NavigationPanel>
     <div class="WorkSpace">
       <h1>Hello</h1>
     </div>
@@ -31,13 +31,21 @@ export default {
 </script>
 
 <style>
+
 #app {
-  background: #F5F5F5;
-  display: flex;
+    background: #84909F;
+    width: 100%;
+    display: flex;
+    align-items: stretch;
+    flex-direction: row;
+    position: absolute;
+    left:0;
+    right:0;
+    top:0;
+    bottom:0;
 }
 
-div.WorkSpace {
+.WorkSpace {
   padding: 1px 16px;
-  height: 1000px;
 }
 </style>

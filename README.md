@@ -1,5 +1,8 @@
 # my_tomato
 
+## Colors
+https://colorscheme.ru/#3e41PaWccw0w0
+
 ## Project setup
 ```
 npm install
@@ -19,6 +22,7 @@ npm run build
 ```
 npm run lint
 ```
+
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
