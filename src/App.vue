@@ -6,6 +6,7 @@
         <UserConfig v-show=show_userConfig />
         <Registration v-show=show_registration />
         <Settings v-show="show_settings"/>
+        <Tasks v-show="show_tasks" />
   </div>
 </template>
 
@@ -15,6 +16,7 @@ import Login from "@/components/Login";
 import Registration from "@/components/Registration";
 import UserConfig from "@/components/UserConfig";
 import Settings from "@/components/Settings";
+import Tasks from "@/components/Tasks";
 
 export default {
   name: 'App',
@@ -35,6 +37,7 @@ export default {
         Registration,
         UserConfig,
         Settings,
+        Tasks,
   },
   methods: {
       show (data) {

@@ -25,9 +25,6 @@
                 <button class="back">Back</button>
                 <button class="save">Save</button>
             </div>
-
-
-
     </div>
 </template>
 
@@ -64,7 +61,7 @@ name: "Settings"
     }
     input {
         border-radius: 100px;
-        width: 5%;
+        width: 10%;
         height: 40%;
         text-align: center;
     }
