@@ -4,15 +4,17 @@
         <Login v-show=show_login />
 <!--        <Registration></Registration>-->
         <UserConfig v-show=show_userConfig />
-
+        <Registration v-show=show_registration />
+        <Settings v-show="show_settings"/>
   </div>
 </template>
 
 <script>
 import NavigationPanel from "@/components/NavigationPanel";
 import Login from "@/components/Login";
-// import Registration from "@/components/Registration";
+import Registration from "@/components/Registration";
 import UserConfig from "@/components/UserConfig";
+import Settings from "@/components/Settings";
 
 export default {
   name: 'App',
@@ -24,13 +26,15 @@ export default {
         show_add_task: false,
         show_settings: false,
         show_login: true,
+        show_registration: false,
     }
   },
     components: {
         NavigationPanel,
         Login,
-    //     Registration,
+        Registration,
         UserConfig,
+        Settings,
   },
   methods: {
       show (data) {

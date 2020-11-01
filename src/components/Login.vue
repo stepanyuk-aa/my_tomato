@@ -38,7 +38,6 @@ name: "Login"
         align-items: center;
         justify-content: center;
         flex: 1 0 120px;
-
     }
 
     .menu {
@@ -55,6 +54,7 @@ name: "Login"
         border-radius: 100px;
         width: 70%;
         height: 30%;
+        text-align: center;
     }
 
     .user_logo {

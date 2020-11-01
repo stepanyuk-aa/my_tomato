@@ -58,6 +58,7 @@ input {
     border-radius: 100px;
     width: 70%;
     height: 30%;
+    text-align: center;
 }
 
 .user_logo {
