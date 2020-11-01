@@ -1,14 +1,15 @@
 <template>
     <div id="app">
         <NavigationPanel></NavigationPanel>
-        <Login></Login>
+<!--        <Login></Login>-->
+        <Registration></Registration>
   </div>
 </template>
 
 <script>
 import NavigationPanel from "@/components/NavigationPanel";
-import Login from "@/components/Login";
-
+// import Login from "@/components/Login";
+import Registration from "@/components/Registration";
 
 export default {
   name: 'App',
@@ -17,9 +18,10 @@ export default {
       title: "Hello!"
     }
   },
-  components: {
-    NavigationPanel,
-    Login,
+    components: {
+        NavigationPanel,
+    // Login,
+        Registration,
   },
   methods: {
 

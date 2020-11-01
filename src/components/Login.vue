@@ -1,7 +1,6 @@
 <template>
     <div class="login">
         <div class="user_logo"></div>
-
         <div class="menu">
            <div class="email"></div>
            <input type="email">
