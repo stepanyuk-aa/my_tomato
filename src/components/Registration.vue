@@ -1,6 +1,7 @@
 <template>
-    <div class="login">
+    <div class="registration">
         <div class="user_logo"></div>
+        <h1>Registration</h1>
 
         <div class="menu">
             <div class="email"></div>
@@ -17,8 +18,8 @@
         </div>
 
         <div class="buttons">
-            <button class="registration">Back</button>
-            <button class="sign_in">Create Account</button>
+            <button class="back">Back</button>
+            <button class="save">Create Account</button>
         </div>
     </div>
 </template>
@@ -30,7 +31,7 @@ export default {
 </script>
 
 <style scoped>
-.login {
+.registration {
     display: flex;
     flex-direction: column;
     margin-left: auto;
@@ -92,14 +93,11 @@ button {
     width: 30%;
     height: 30%;
 }
-.registration {
+.back {
     background-color: coral;
 }
-.forgot_pass {
-    background-color: darkgrey;
-    height: 20%;
-}
-.sign_in {
+
+.save {
     background-color: #42b983;
 }
 </style>

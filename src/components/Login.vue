@@ -1,6 +1,8 @@
 <template>
     <div class="login">
         <div class="user_logo"></div>
+        <h1>Login</h1>
+
         <div class="menu">
            <div class="email"></div>
            <input type="email">
@@ -14,7 +16,7 @@
         <div class="buttons">
             <button class="registration">Registration</button>
             <button class="forgot_pass">Forgot password</button>
-            <button class="sign_in">Sign in</button>
+            <button class="save">Sign in</button>
         </div>
     </div>
 </template>
@@ -95,7 +97,7 @@ name: "Login"
         background-color: darkgrey;
         height: 20%;
     }
-    .sign_in {
+    .save {
         background-color: #42b983;
     }
 </style>

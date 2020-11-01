@@ -1,30 +1,45 @@
 <template>
     <div id="app">
-        <NavigationPanel></NavigationPanel>
-<!--        <Login></Login>-->
-        <Registration></Registration>
+        <NavigationPanel @Shows="show"/>
+        <Login v-show=show_login />
+<!--        <Registration></Registration>-->
+        <UserConfig v-show=show_userConfig />
+
   </div>
 </template>
 
 <script>
 import NavigationPanel from "@/components/NavigationPanel";
-// import Login from "@/components/Login";
-import Registration from "@/components/Registration";
+import Login from "@/components/Login";
+// import Registration from "@/components/Registration";
+import UserConfig from "@/components/UserConfig";
 
 export default {
   name: 'App',
   data() {
     return {
-      title: "Hello!"
+        title: "Hello!",
+        show_userConfig: false,
+        show_tasks: false,
+        show_add_task: false,
+        show_settings: false,
+        show_login: true,
     }
   },
     components: {
         NavigationPanel,
-    // Login,
-        Registration,
+        Login,
+    //     Registration,
+        UserConfig,
   },
   methods: {
-
+      show (data) {
+          this.show_userConfig = data.show_userConfig
+          this.show_tasks = data.show_tasks
+          this.show_add_task = data.show_add_task
+          this.show_settings = data.show_settings
+          this.show_login = false
+      }
   },
 }
 
