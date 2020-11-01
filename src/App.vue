@@ -1,15 +1,13 @@
 <template>
-  <div id="app">
-      <NavigationPanel></NavigationPanel>
-    <div class="WorkSpace">
-      <h1>Hello</h1>
-    </div>
+    <div id="app">
+        <NavigationPanel></NavigationPanel>
+        <Login></Login>
   </div>
 </template>
 
 <script>
 import NavigationPanel from "@/components/NavigationPanel";
-
+import Login from "@/components/Login";
 
 
 export default {
@@ -21,6 +19,7 @@ export default {
   },
   components: {
     NavigationPanel,
+    Login,
   },
   methods: {
 
