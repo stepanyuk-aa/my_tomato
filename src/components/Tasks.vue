@@ -20,18 +20,58 @@
                 </div>
             </div>
         </div>
-        <div class="midle"> </div>
-        <div class="column">
-            <div class="border">2</div>
-            <div class="border">2</div>
-            <div class="border">2</div>
+
+        <div class="column-r">
+            <div class="task_title">
+                <input class="in_singl_task" type="text">
+                <select class="sel_singl_task">
+                    <option>Work</option>
+                    <option>Home</option>
+                </select>
+                <button class="edit">Edit</button>
+                <button class="save">Save</button>
+            </div>
+
+            <Timer style="text-align: center"
+               :initial-value="360500"
+               :stroke-width="5"
+               :seconds-stroke-color="'#f00'"
+               :minutes-stroke-color="'#0ff'"
+               :hours-stroke-color="'#0f0'"
+               :underneath-stroke-color="'lightgrey'"
+               :seconds-fill-color="'#00ffff66'"
+               :minutes-fill-color="'#00ff0066'"
+               :hours-fill-color="'#ff000066'"
+               :size="200"
+               :padding="4"
+               :hour-label="'hours'"
+               :minute-label="'minutes'"
+               :second-label="'seconds'"
+               :show-second="true"
+               :show-minute="true"
+               :show-hour="false"
+               :show-negatives="true"
+               :paused="some_variable"
+               :notify-every="'minute'"
+            />
+            <div class="control">
+                <button class="bt_contol">Start</button>
+                <button class="bt_contol">Stop</button>
+                <button class="bt_contol">Wipe</button>
+            </div>
         </div>
     </div>
 </template>
-
 <script>
+
+import Timer from "@/components/Timer";
+
 export default {
-name: "Tasks"
+    name: "Tasks"
+    ,
+    components: {
+        Timer,
+    }
 }
 </script>
 
@@ -54,7 +94,15 @@ name: "Tasks"
 
         width: 50%;
     }
+    .column-r {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 1%;
+        align-items: center;
 
+        width: 50%;
+    }
     .group {
         display: flex;
         width: 100%;
@@ -106,18 +154,39 @@ name: "Tasks"
         padding-left: 3%;
     }
 
-    .border {
-        border: black solid 2px;
-        width: 100%;
-        height: 20%;
-        margin: 5%;
+    .task_title {
+        display: flex;
+        justify-content: space-around;
+        /*border: black solid 2px;*/
+        border-radius: 10px;
+
+        width: 80%;
+        height: 4%;
+
+        margin-top: 4%;
+        margin-bottom: 10%;
     }
-    .red {
-        border: red solid 2px;
-        background-color: red;
+
+    .edit {
     }
-    .green {
-        border: #42b983 solid 2px;
-        background-color: #42b983;
+
+    .save {
+        display: none;
+    }
+
+    .control {
+        display: flex;
+        width: 60%;
+        height: 15%;
+        justify-content: space-around;
+
+        margin-top: 10%;
+    }
+
+    .bt_contol {
+        width: 30%;
+        height: 50%;
+
+        border-radius: 30%;
     }
 </style>
