@@ -32,6 +32,10 @@
                 <button class="save">Save</button>
             </div>
 
+            <div ></div>
+            <div ></div>
+
+            <button class="count_interfals">5</button>
             <Timer style="text-align: center"
                :initial-value="360500"
                :stroke-width="5"
@@ -54,6 +58,10 @@
                :paused="some_variable"
                :notify-every="'minute'"
             />
+
+            <div ></div>
+            <div ></div>
+
             <div class="control">
                 <button class="bt_contol">Start</button>
                 <button class="bt_contol">Stop</button>
@@ -172,6 +180,13 @@ export default {
 
     .save {
         display: none;
+    }
+
+    .count_interfals {
+        width: 50%;
+        height: 5%;
+        text-align: center;
+        background-color: #B09F83;
     }
 
     .control {
