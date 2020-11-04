@@ -42,11 +42,6 @@ export default {
         },
         fun_add_task(){
             this.show_add_task = !this.show_add_task
-            if(this.show_add_task){
-                this.show_tasks = false
-                this.show_userConfig = false
-                this.show_settings =false
-            }
 
             this.send()
         },

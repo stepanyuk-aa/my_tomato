@@ -5,25 +5,79 @@
 
         <div class="menu">
            <div class="email"></div>
-           <input type="email">
+           <input v-model="email" type="email">
        </div>
 
         <div class="menu">
             <div class="password"></div>
-            <input type="password">
+            <input v-model="password" type="password">
         </div>
 
         <div class="buttons">
-            <button class="registration">Registration</button>
+            <button @click='to_registration' class="registration">Registration</button>
             <button class="forgot_pass">Forgot password</button>
-            <button class="save">Sign in</button>
+            <button @click='login' class="save">Sign in</button>
         </div>
     </div>
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
-name: "Login"
+    name: "Login",
+    data(){
+        return {
+            email: undefined,
+            password: undefined,
+        }
+    },
+    methods: {
+        to_tasks() {
+            this.$emit('login_goto', {
+                go:'tasks'
+            })
+        },
+        to_registration(){
+            this.$emit('login_goto', {
+                go:'registration'
+            })
+        },
+        local_storage(mode, key, value = ''){
+            if (mode === 'set') {
+                console.log("Set:" , key, "|", value)
+                localStorage.setItem(key, value)
+            }
+            else {
+                console.log(
+                    localStorage.getItem(key)
+                )
+            }
+        },
+        login(){
+            if (this.password === undefined || this.email === undefined) {
+                alert("Оставлены пустые поля!")}
+            else {
+                axios
+                    .post("http://192.168.1.108:5000/login", {'login':this.email, 'password':this.password})
+                    .then((response) => {
+                        if(response.data.status === "success"){
+                            this.local_storage('set', 'token', response.data.token)
+                            console.log(response.data);
+
+
+                            this.to_tasks()
+                        }
+                        if(response.data.status === "error"){
+                            alert("Ваш логин или пароль не корректен!")
+                        }
+                    })
+                    .catch((error) => {
+                        console.log(error);
+                    });
+                }
+            }
+        }
 }
 </script>
 

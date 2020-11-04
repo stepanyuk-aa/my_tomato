@@ -5,28 +5,72 @@
 
         <div class="menu">
             <div class="email"></div>
-            <input type="email">
+            <input v-model="email" type="email">
         </div>
 
         <div class="menu">
             <div class="password"></div>
-            <input type="password">
+            <input v-model="password1" type="password">
         </div>
         <div class="menu">
             <div class="password"></div>
-            <input type="password">
+            <input v-model="password2" type="password">
         </div>
 
         <div class="buttons">
-            <button class="back">Back</button>
-            <button class="save">Create Account</button>
+            <button @click="to_login" class="back">Back</button>
+            <button @click="create_account" class="save">Create Account</button>
         </div>
     </div>
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
-    name: "Registration"
+    name: "Registration",
+    data(){
+        return {
+            email: undefined,
+            password1: undefined,
+            password2: undefined,
+        }
+    },
+    methods: {
+        to_login(){
+            this.$emit('to_login', {
+                go:true
+            })
+        },
+        create_account(){
+            if (this.password1 === undefined || this.password2 === undefined || this.email === undefined) {
+                alert("Оставлены пустые поля!")}
+            else {
+                if (this.password1 !== this.password2) { alert("Пароли не совпадают!") }
+                else {
+                    // Запрос на создание
+                    axios
+                        .post("http://192.168.1.108:5000/registration", {'login':this.email, 'password':this.password1})
+                        .then((response) => {
+                            if(response.data.status === "success"){
+                                this.to_login()
+                            }
+                            if(response.data.status === "conflict"){
+                                alert("Пользователь с таким логином уже зарегестрирован!")
+                            }
+                            if(response.data.status === "error"){
+                                alert("Ваш логин не корректен!")
+                            }
+                        })
+                        .catch((error) => {
+                            console.log(error);
+                        });
+
+                    // Вернуться на исходную
+                }
+            }
+        }
+    }
 }
 </script>
 

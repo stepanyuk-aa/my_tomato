@@ -55,9 +55,9 @@
                :show-minute="true"
                :show-hour="false"
                :show-negatives="true"
-               :paused="some_variable"
                :notify-every="'minute'"
             />
+<!--            :paused="some_variable"-->
 
             <div ></div>
             <div ></div>
