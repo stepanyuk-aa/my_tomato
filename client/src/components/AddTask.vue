@@ -1,7 +1,7 @@
 <template>
     <div class="modal">
         <div class="task_title">
-            <h1>Добавить задание</h1>
+            <h1>Добавить задание {{ip}} </h1>
         </div>
         <div class="task_body">
             <div class="row">
@@ -27,8 +27,11 @@
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
     name: "AddTask",
+    props: ['ip'],
     data() {
         return {
             showModal: false
@@ -38,7 +41,24 @@ export default {
         close(){
             this.showModal = false
             this.$emit('Close_Add_Task')
-        }
+        },
+        send_task(data){
+            console.log(data)
+            axios
+                .post("http://" + this.ip + "/addtask", {'login':'admin', 'password':"test"})
+                .then((response) => {
+                    if(response.data.status === "success"){
+                        this.local_storage('set', 'token', response.data.token)
+                        console.log(response.data);
+                    }
+                    else {
+                        console.log(response.data);
+                    }
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
+        },
     }
 }
 </script>

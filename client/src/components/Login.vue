@@ -26,6 +26,7 @@ import axios from "axios";
 
 export default {
     name: "Login",
+    props: ['ip'],
     data(){
         return {
             email: undefined,
@@ -59,12 +60,11 @@ export default {
                 alert("Оставлены пустые поля!")}
             else {
                 axios
-                    .post("http://192.168.1.108:5000/login", {'login':this.email, 'password':this.password})
+                    .post("http://" + this.ip + "/login", {'login':this.email, 'password':this.password})
                     .then((response) => {
                         if(response.data.status === "success"){
                             this.local_storage('set', 'token', response.data.token)
                             console.log(response.data);
-
 
                             this.to_tasks()
                         }

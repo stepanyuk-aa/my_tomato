@@ -1,13 +1,13 @@
 <template>
     <div id="app">
         <NavigationPanel @Shows="show"/>
-        <Login @login_goto="login_goto" v-show=show_login />
+        <Login @login_goto="login_goto" v-show=show_login :ip=ip />
 <!--        <Registration></Registration>-->
         <UserConfig v-show=show_userConfig />
-        <Registration @to_login="to_login" v-show=show_registration />
+        <Registration @to_login="to_login" v-show=show_registration :ip=ip />
         <Settings v-show="show_settings"/>
         <Tasks v-show="show_tasks" @Tasks="Tasks" />
-        <AddTask @Close_Add_Task="Close_Add_Task" class="modal" v-show="show_add_task" @close="showModal = false" ></AddTask>
+        <AddTask @Close_Add_Task="Close_Add_Task" class="modal" v-show="show_add_task" @close="showModal = false" :ip=ip></AddTask>
 
         <button @click="local_storage('get', 'token')"></button>
     </div>
@@ -15,8 +15,6 @@
 </template>
 
 <script>
-
-import axios from 'axios'
 
 import NavigationPanel from "@/components/NavigationPanel";
 import Login from "@/components/Login";
@@ -31,6 +29,7 @@ export default {
   data() {
     return {
         title: "Hello!",
+        ip: "192.168.1.106:5000",
         show_userConfig: false,
         show_tasks: false,
         show_add_task: false,
@@ -73,23 +72,6 @@ export default {
       to_login(){
           this.show_login = true
           this.show_registration = false
-      },
-      server_get(data){
-          console.log(data)
-          axios
-              .post("http://192.168.1.108:5000/registration", {'login':'admin', 'password':"test"})
-              .then((response) => {
-                  if(response.data.status === "success"){
-                      this.local_storage('set', 'token', response.data.token)
-                      console.log(response.data);
-                  }
-                  else {
-                      console.log(response.data);
-                  }
-              })
-              .catch((error) => {
-                  console.log(error);
-              });
       },
       local_storage(mode, key, value = ''){
           if (mode === 'set') {

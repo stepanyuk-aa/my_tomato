@@ -29,6 +29,7 @@ import axios from "axios";
 
 export default {
     name: "Registration",
+    props: ['ip'],
     data(){
         return {
             email: undefined,
@@ -50,7 +51,7 @@ export default {
                 else {
                     // Запрос на создание
                     axios
-                        .post("http://192.168.1.108:5000/registration", {'login':this.email, 'password':this.password1})
+                        .post("http://" + this.ip + "/registration", {'login':this.email, 'password':this.password1})
                         .then((response) => {
                             if(response.data.status === "success"){
                                 this.to_login()
