@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="289f0945-ebe0-41f7-a68c-12f6dde42f0f" name="Default Changelist" comment="add functional for Registration, Login and add local storage for token and other sessions variable" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Vue Single File Component" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1j3PB6C4zgivgFzzqICwNKgvKDj" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="dart.analysis.tool.window.visible" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/img" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="nodejs_interpreter_path" value="$APPLICATION_CONFIG_DIR$/node/node-v12.13.1-win-x64/node" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="settings.nodejs" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="G:\Git\my_tomato\src\img" />
+      <recent name="G:\Git\my_tomato\src\components" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="G:\Git\my_tomato\src\img" />
+      <recent name="G:\Git\my_tomato\src\components" />
+    </key>
+  </component>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="npm install axios" />
+    </option>
+  </component>
+  <component name="RunManager" selected="npm.npm serve">
+    <configuration name="Debug Application" type="JavascriptDebugType" uri="http://localhost:8080">
+      <method v="2" />
+    </configuration>
+    <configuration name="lint" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="lint" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="npm serve" type="js.build_tools.npm">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="serve" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="npm.lint" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="289f0945-ebe0-41f7-a68c-12f6dde42f0f" name="Default Changelist" comment="" />
+      <created>1603029664574</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1603029664574</updated>
+      <workItem from="1603029665770" duration="5304000" />
+      <workItem from="1603298688574" duration="5239000" />
+      <workItem from="1604154903224" duration="6372000" />
+      <workItem from="1604201635404" duration="24523000" />
+      <workItem from="1604332216388" duration="4642000" />
+      <workItem from="1604415631444" duration="14103000" />
+      <workItem from="1604507276384" duration="5749000" />
+      <workItem from="1604590206466" duration="1972000" />
+      <workItem from="1605198517902" duration="2929000" />
+    </task>
+    <task id="LOCAL-00001" summary="start">
+      <created>1604155663686</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1604155663686</updated>
+    </task>
+    <task id="LOCAL-00002" summary="create NavigationPanel">
+      <created>1604166347166</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1604166347166</updated>
+    </task>
+    <task id="LOCAL-00003" summary="create Login">
+      <created>1604223054175</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1604223054175</updated>
+    </task>
+    <task id="LOCAL-00004" summary="create Login">
+      <created>1604223121330</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1604223121330</updated>
+    </task>
+    <task id="LOCAL-00005" summary="create Login">
+      <created>1604223193162</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1604223193162</updated>
+    </task>
+    <task id="LOCAL-00006" summary="create Registration">
+      <created>1604224342840</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1604224342840</updated>
+    </task>
+    <task id="LOCAL-00007" summary="add switch pages">
+      <created>1604236167956</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1604236167956</updated>
+    </task>
+    <task id="LOCAL-00008" summary="add switch pages">
+      <created>1604236175915</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1604236175915</updated>
+    </task>
+    <task id="LOCAL-00009" summary="add Settings">
+      <created>1604252101766</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1604252101766</updated>
+    </task>
+    <task id="LOCAL-00010" summary="add half of Tasks">
+      <created>1604254937429</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1604254937429</updated>
+    </task>
+    <task id="LOCAL-00011" summary="add second half of Tasks.vue">
+      <created>1604336620856</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1604336620856</updated>
+    </task>
+    <task id="LOCAL-00012" summary="litle update for Tasks.vue">
+      <created>1604337131983</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1604337131983</updated>
+    </task>
+    <task id="LOCAL-00013" summary="add functional for Registration, Login and add local storage for token and other sessions variable">
+      <created>1604513047014</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1604513047014</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="start" />
+    <MESSAGE value="create NavigationPanel" />
+    <MESSAGE value="create Login" />
+    <MESSAGE value="create Registration" />
+    <MESSAGE value="add switch pages" />
+    <MESSAGE value="add Settings" />
+    <MESSAGE value="add half of Tasks" />
+    <MESSAGE value="add second half of Tasks.vue" />
+    <MESSAGE value="litle update for Tasks.vue" />
+    <MESSAGE value="add functional for Registration, Login and add local storage for token and other sessions variable" />
+    <option name="LAST_COMMIT_MESSAGE" value="add functional for Registration, Login and add local storage for token and other sessions variable" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="762" y="229" key="#Vue" timestamp="1604155771942">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="762" y="229" key="#Vue/0.0.1920.1040/-1600.174.1600.860@0.0.1920.1040" timestamp="1604155771942" />
+    <state x="690" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1604166308340">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="690" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040/-1600.174.1600.860@0.0.1920.1040" timestamp="1604166308340" />
+    <state x="740" y="278" key="FileChooserDialogImpl" timestamp="1604478949219">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="740" y="278" key="FileChooserDialogImpl/0.0.1920.1040/-1600.174.1600.860@0.0.1920.1040" timestamp="1604478949219" />
+    <state x="835" y="418" key="Github.ShareDialog" timestamp="1604227163153">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="835" y="418" key="Github.ShareDialog/0.0.1920.1040/-1600.174.1600.860@0.0.1920.1040" timestamp="1604227163153" />
+    <state width="1899" height="212" key="GridCell.Tab.0.bottom" timestamp="1605204935740">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1899" height="212" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1600.174.1600.860@0.0.1920.1040" timestamp="1605204935740" />
+    <state width="1899" height="212" key="GridCell.Tab.0.center" timestamp="1605204935740">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1899" height="212" key="GridCell.Tab.0.center/0.0.1920.1040/-1600.174.1600.860@0.0.1920.1040" timestamp="1605204935740" />
+    <state width="1899" height="212" key="GridCell.Tab.0.left" timestamp="1605204935740">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1899" height="212" key="GridCell.Tab.0.left/0.0.1920.1040/-1600.174.1600.860@0.0.1920.1040" timestamp="1605204935740" />
+    <state width="1899" height="212" key="GridCell.Tab.0.right" timestamp="1605204935740">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1899" height="212" key="GridCell.Tab.0.right/0.0.1920.1040/-1600.174.1600.860@0.0.1920.1040" timestamp="1605204935740" />
+    <state x="461" y="182" key="SettingsEditor" timestamp="1604478975945">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="461" y="182" key="SettingsEditor/0.0.1920.1040/-1600.174.1600.860@0.0.1920.1040" timestamp="1604478975945" />
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1604513050118">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040/-1600.174.1600.860@0.0.1920.1040" timestamp="1604513050118" />
+    <state x="777" y="451" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1604336573683">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="777" y="451" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040/-1600.174.1600.860@0.0.1920.1040" timestamp="1604336573683" />
+    <state x="616" y="249" width="672" height="677" key="run.anything.popup" timestamp="1604478834125">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="616" y="249" width="672" height="677" key="run.anything.popup/0.0.1920.1040/-1600.174.1600.860@0.0.1920.1040" timestamp="1604478834125" />
+  </component>
+</project>
