@@ -30,6 +30,7 @@ export default {
     return {
         title: "Hello!",
         ip: "192.168.1.106:5000",
+        token: "",
         show_userConfig: false,
         show_tasks: false,
         show_add_task: false,
@@ -86,6 +87,8 @@ export default {
       },
       local_storage(mode, key, value = ''){
           if (mode === 'set') {
+              if (key == "token") { this.token = value }
+
               console.log("Set:" , key, "|", value)
               localStorage.setItem(key, value)
           }
