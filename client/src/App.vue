@@ -49,11 +49,22 @@ export default {
   },
   methods: {
       show (data) {
-          this.show_userConfig = data.show_userConfig
+          let tk = this.local_storage("get", "token")
+          if ( tk === undefined || tk === null){
+              this.show_login = data.show_userConfig
+              this.show_userConfig = false
+          }
+          else {
+              console.log(this.local_storage("get", "token"))
+
+
+              this.show_userConfig = data.show_userConfig
+              this.show_login = false
+          }
+
           this.show_tasks = data.show_tasks
           this.show_add_task = data.show_add_task
           this.show_settings = data.show_settings
-          this.show_login = false
           this.show_registration = false
       },
       Close_Add_Task(){
@@ -79,9 +90,7 @@ export default {
               localStorage.setItem(key, value)
           }
           else {
-              console.log(
-                  localStorage.getItem(key)
-              )
+              return localStorage.getItem(key)
           }
       },
       Tasks(data){
