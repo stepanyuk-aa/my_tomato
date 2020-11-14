@@ -6,7 +6,7 @@
         <UserConfig v-show=show_userConfig />
         <Registration @to_login="to_login" v-show=show_registration />
         <Settings v-show="show_settings"/>
-        <Tasks v-show="show_tasks" />
+        <Tasks v-show="show_tasks" @Tasks="Tasks" />
         <AddTask @Close_Add_Task="Close_Add_Task" class="modal" v-show="show_add_task" @close="showModal = false" ></AddTask>
 
         <button @click="local_storage('get', 'token')"></button>
@@ -101,6 +101,9 @@ export default {
                   localStorage.getItem(key)
               )
           }
+      },
+      Tasks(data){
+              if (data.add_tasks === true) { this.show_add_task = true}
       },
   },
 }

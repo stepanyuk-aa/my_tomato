@@ -18,6 +18,7 @@
                     </select>
                     <button class="bt_singl_task">0</button>
                 </div>
+                <div @click='fun_add_task' class="add_task icon"></div>
             </div>
         </div>
 
@@ -75,10 +76,27 @@
 import Timer from "@/components/Timer";
 
 export default {
-    name: "Tasks"
-    ,
+    name: "Tasks",
+    data() {
+        return {
+            add_tasks: true,
+        }
+    },
     components: {
         Timer,
+    },
+    methods: {
+        fun_add_task(){
+            console.log("Hello")
+            this.add_tasks = true
+            this.send()
+        },
+        send() {
+            this.$emit('Tasks', {
+                add_tasks: this.add_tasks,
+            })
+            this.add_tasks = false
+        }
     }
 }
 </script>
@@ -129,7 +147,6 @@ export default {
     .tasks {
         display: flex;
         flex-direction: column;
-
         width: 100%;
         height: 90%;
     }
@@ -203,5 +220,13 @@ export default {
         height: 50%;
 
         border-radius: 30%;
+    }
+
+    .add_task {
+        background: url('../img/add_task.svg') no-repeat ;
+        width: 8%;
+        height: 8%;
+
+        align-self: center;
     }
 </style>
