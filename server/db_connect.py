@@ -23,6 +23,10 @@ class ohMysql(object):
                 table = """INSERT INTO users 
                     (login, password, token, time) 
                     VALUES (%s, %s, %s, %s)"""
+            if (table == 'tasks'):
+                table = """INSERT INTO tasks 
+                    (`task`, `description`, `interval`, `count`, `timer`, `user`)
+                    VALUES (%s, %s, %s, %s, %s, %s)"""
 
             self.mycursor.execute(table,values)
             self.mysqldb.commit()

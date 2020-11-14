@@ -1,6 +1,7 @@
 # from mysql.connector import connect
 
 import auth
+import tasks
 import db_connect
 from flask import Flask
 from flask import request
@@ -49,6 +50,13 @@ def f_registration():
         check = {'status':'error'}
 
     return jsonify(check)
+
+@app.route('/addtask', methods=['POST'])
+def add_task():
+    new_task = request.get_json()
+    res = tasks.add_task(new_task)
+
+    return jsonify(res)
 
 if __name__ == '__main__':
     app.run(host="192.168.1.106")
