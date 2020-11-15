@@ -58,5 +58,11 @@ def add_task():
 
     return jsonify(res)
 
+@app.route('/gettasks', methods=['POST'])
+def get_tasks():
+    token = request.get_json()['token']
+    
+    return jsonify(tasks.get_tasks(token))
+
 if __name__ == '__main__':
     app.run(host="192.168.1.106")

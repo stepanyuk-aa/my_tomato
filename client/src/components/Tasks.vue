@@ -9,22 +9,19 @@
                 </select>
             </div>
             <div class="tasks">
-                <div class="singl_task">
-                    <button class="bt_singl_task">.</button>
-                    <input class="in_singl_task" type="text">
-                    <select class="sel_singl_task">
-                        <option>Work</option>
-                        <option>Home</option>
-                    </select>
-                    <button class="bt_singl_task">0</button>
-                </div>
-                <div @click='fun_add_task' class="add_task icon"></div>
+                <SingleTask
+                    v-for="task in tasks"
+                    v-bind:key="task[0]"
+                    v-bind:task="task"
+                />
             </div>
+            <div @click='fun_add_task' class="add_task icon"></div>
         </div>
 
         <div class="column-r">
             <div class="task_title">
                 <input class="in_singl_task" type="text">
+
                 <select class="sel_singl_task">
                     <option>Work</option>
                     <option>Home</option>
@@ -32,8 +29,10 @@
                 <button class="edit">Edit</button>
                 <button class="save">Save</button>
             </div>
-
-            <div ></div>
+            <div class="textarea">
+                <div class="lable_description"><p>Описание:</p></div>
+                <textarea class="text_description" > </textarea>
+            </div>
             <div ></div>
 
             <button class="count_interfals">5</button>
@@ -74,9 +73,10 @@
 <script>
 
 import Timer from "@/components/Timer";
-
+import SingleTask from "@/components/SingleTask";
 export default {
     name: "Tasks",
+    props: ['tasks'],
     data() {
         return {
             add_tasks: true,
@@ -84,6 +84,7 @@ export default {
     },
     components: {
         Timer,
+        SingleTask,
     },
     methods: {
         fun_add_task(){
@@ -150,34 +151,9 @@ export default {
         width: 100%;
         height: 90%;
     }
-    .singl_task {
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
 
-        margin: 1%;
-        height: 5%;
 
-    }
 
-    .bt_singl_task {
-        border-radius: 50%;
-        width: 10%;
-        height: 100%;
-    }
-
-    .in_singl_task {
-        width: 50%;
-        height: 80%;
-        min-height: 5%;
-        text-align: center;
-    }
-
-    .sel_singl_task {
-        width: 20%;
-        height: 100%;
-        padding-left: 3%;
-    }
 
     .task_title {
         display: flex;
@@ -191,7 +167,23 @@ export default {
         margin-top: 4%;
         margin-bottom: 10%;
     }
-
+    .textarea {
+        width: 100%;
+        height: 10%;
+        display: flex;
+        justify-content: space-around;
+    }
+    .text_description {
+        width: 65%;
+    }
+    lable_description {
+        display: flex;
+        width: 100%;
+        height: 100%;
+        border: #B09F83 dashed 2px;
+        border-radius: 10px;
+        background-color: #42b983;
+    }
     .edit {
     }
 

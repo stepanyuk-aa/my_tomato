@@ -6,7 +6,7 @@
         <UserConfig v-show=show_userConfig />
         <Registration @to_login="to_login" v-show=show_registration :ip=ip />
         <Settings v-show="show_settings"/>
-        <Tasks v-show="show_tasks" @Tasks="Tasks" />
+        <Tasks v-show="show_tasks" @Tasks="Tasks" :tasks="tasks" />
         <AddTask @Close_Add_Task="Close_Add_Task" class="modal" v-show="show_add_task" @close="showModal = false" :ip=ip></AddTask>
 
         <button @click="local_storage('get', 'token')"></button>
@@ -23,6 +23,7 @@ import UserConfig from "@/components/UserConfig";
 import Settings from "@/components/Settings";
 import Tasks from "@/components/Tasks";
 import AddTask from "@/components/AddTask";
+import axios from "axios";
 
 export default {
   name: 'App',
@@ -31,6 +32,7 @@ export default {
         title: "Hello!",
         ip: "192.168.1.106:5000",
         token: "",
+        tasks: [],
         show_userConfig: false,
         show_tasks: false,
         show_add_task: false,
@@ -64,6 +66,9 @@ export default {
           }
 
           this.show_tasks = data.show_tasks
+          if (this.show_tasks === true){
+            this.get_tasks();
+          }
           this.show_add_task = data.show_add_task
           this.show_settings = data.show_settings
           this.show_registration = false
@@ -98,6 +103,27 @@ export default {
       },
       Tasks(data){
               if (data.add_tasks === true) { this.show_add_task = true}
+      },
+      get_tasks(){
+          let token = this.local_storage('get','token')
+          if (token === null){
+              alert("Вы не авторизованы!")
+          }
+
+          axios
+              .post("http://" + this.ip + "/gettasks", {
+                  "token": token,
+              })
+              .then((response) => {
+                  if (response.data instanceof  Array) {
+                      this.tasks = response.data;
+                  } else {
+                      console.log("ERROR DATA");
+                  }
+              })
+              .catch((error) => {
+                  console.log(error);
+              });
       },
   },
 }

@@ -1,5 +1,23 @@
 import db_connect
 
+def get_login(token):
+    db = db_connect.ohMysql(
+        ip='192.168.1.10',
+        user='admin',
+        password="",
+        current_db='myPomidoro'
+    )
+    login = db.read(
+        'users',
+        {
+            'key': 'token',
+            'if': '=',
+            'value': token
+        }
+    )[0][1]
+
+    return login
+
 def add_task(data):
     db = db_connect.ohMysql(
         ip='192.168.1.10',
@@ -7,16 +25,7 @@ def add_task(data):
         password="",
         current_db='myPomidoro'
     )
-
-    # Get user login
-    login = db.read(
-        'users',
-        {
-            'key': 'token',
-            'if': '=',
-            'value': data['token']
-        }
-    )[0][1]
+    login = get_login(data['token'])
 
     ## (task, description, interval, count/repeat, timer, user)
     dat = db.create(
@@ -28,3 +37,22 @@ def add_task(data):
         return {'status':'ok'}
     else:
         return {'status':'error'}
+
+def get_tasks(token):
+    db = db_connect.ohMysql(
+        ip='192.168.1.10',
+        user='admin',
+        password="",
+        current_db='myPomidoro'
+    )
+    login = get_login(token)
+
+    tasks = db.read(
+        'tasks',
+        {
+            'key': 'user',
+            'if': '=',
+            'value': login
+        }
+    )
+    return tasks
