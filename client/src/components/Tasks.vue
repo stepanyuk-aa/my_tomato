@@ -13,78 +13,41 @@
                     v-for="task in tasks"
                     v-bind:key="task[0]"
                     v-bind:task="task"
+
+                    @choose_task="f_choose_task"
                 />
             </div>
             <div @click='fun_add_task' class="add_task icon"></div>
         </div>
 
         <div class="column-r">
-            <div class="task_title">
-                <input class="in_singl_task" type="text">
-
-                <select class="sel_singl_task">
-                    <option>Work</option>
-                    <option>Home</option>
-                </select>
-                <button class="edit">Edit</button>
-                <button class="save">Save</button>
-            </div>
-            <div class="textarea">
-                <div class="lable_description"><p>Описание:</p></div>
-                <textarea class="text_description" > </textarea>
-            </div>
-            <div ></div>
-
-            <button class="count_interfals">5</button>
-            <Timer style="text-align: center"
-               :initial-value="360500"
-               :stroke-width="5"
-               :seconds-stroke-color="'#f00'"
-               :minutes-stroke-color="'#0ff'"
-               :hours-stroke-color="'#0f0'"
-               :underneath-stroke-color="'lightgrey'"
-               :seconds-fill-color="'#00ffff66'"
-               :minutes-fill-color="'#00ff0066'"
-               :hours-fill-color="'#ff000066'"
-               :size="200"
-               :padding="4"
-               :hour-label="'hours'"
-               :minute-label="'minutes'"
-               :second-label="'seconds'"
-               :show-second="true"
-               :show-minute="true"
-               :show-hour="false"
-               :show-negatives="true"
-               :notify-every="'minute'"
-            />
-<!--            :paused="some_variable"-->
-
-            <div ></div>
-            <div ></div>
-
-            <div class="control">
-                <button class="bt_contol">Start</button>
-                <button class="bt_contol">Stop</button>
-                <button class="bt_contol">Wipe</button>
-            </div>
+            <Task :task="choose_task" ref="Task"/>
         </div>
     </div>
 </template>
 <script>
-
-import Timer from "@/components/Timer";
 import SingleTask from "@/components/SingleTask";
+import Task from "@/components/Task";
+
 export default {
     name: "Tasks",
     props: ['tasks'],
     data() {
         return {
             add_tasks: true,
+            choose_task: {
+                id: 0,
+                task: "",
+                des: "",
+                interval: 0,
+                count: 0,
+                timer: "",
+            },
         }
     },
     components: {
-        Timer,
         SingleTask,
+        Task,
     },
     methods: {
         fun_add_task(){
@@ -97,7 +60,13 @@ export default {
                 add_tasks: this.add_tasks,
             })
             this.add_tasks = false
-        }
+        },
+        f_choose_task(data){
+            this.choose_task = data;
+            this.$refs.Task.update_timer(
+                parseInt(data.timer)
+            )
+        },
     }
 }
 </script>
@@ -152,67 +121,6 @@ export default {
         height: 90%;
     }
 
-
-
-
-    .task_title {
-        display: flex;
-        justify-content: space-around;
-        /*border: black solid 2px;*/
-        border-radius: 10px;
-
-        width: 80%;
-        height: 4%;
-
-        margin-top: 4%;
-        margin-bottom: 10%;
-    }
-    .textarea {
-        width: 100%;
-        height: 10%;
-        display: flex;
-        justify-content: space-around;
-    }
-    .text_description {
-        width: 65%;
-    }
-    lable_description {
-        display: flex;
-        width: 100%;
-        height: 100%;
-        border: #B09F83 dashed 2px;
-        border-radius: 10px;
-        background-color: #42b983;
-    }
-    .edit {
-    }
-
-    .save {
-        display: none;
-    }
-
-    .count_interfals {
-        width: 50%;
-        height: 5%;
-        text-align: center;
-        background-color: #B09F83;
-    }
-
-    .control {
-        display: flex;
-        width: 60%;
-        height: 15%;
-        justify-content: space-around;
-
-        margin-top: 10%;
-    }
-
-    .bt_contol {
-        width: 30%;
-        height: 50%;
-
-        border-radius: 30%;
-    }
 
     .add_task {
         background: url('../img/add_task.svg') no-repeat ;

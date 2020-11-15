@@ -128,6 +128,7 @@
 
 <script>
 export default {
+    name: "Timer",
     props: {
         initialValue: {
             type: Number,

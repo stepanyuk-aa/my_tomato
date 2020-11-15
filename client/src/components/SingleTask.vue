@@ -1,5 +1,5 @@
 <template>
-<div class="singl_task">
+<div class="singl_task" @click="send">
     <div class="bt_singl_task bt_check"></div>
     <input class="in_singl_task" type="text" v-model="task[1]">
     <select class="sel_singl_task">
@@ -12,6 +12,19 @@
 export default {
     name: "SingleTask",
     props: ['task'],
+    methods: {
+        send() {
+            this.$emit('choose_task', {
+                id: this.task[0],
+                task: this.task[1],
+                des: this.task[2],
+                interval: this.task[3],
+                count: this.task[4],
+                timer: this.task[5]
+            })
+        }
+    },
+
 }
 </script>
 
