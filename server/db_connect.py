@@ -51,7 +51,9 @@ class ohMysql(object):
                 sql_q = sql_q + ' WHERE ' + values['key'] + values['if'] + "'" + values['value'] + "'"
 
             self.mycursor.execute(sql_q)
+
             return self.mycursor.fetchall()
+
         except:
             self.mysqldb.rollback()
             return 'Error'
@@ -80,8 +82,10 @@ class ohMysql(object):
                      values['if']['value']
                      )
 
+
             self.mycursor.execute(sql_q)
             self.mysqldb.commit()
+            print('Update inserted successfully...', values)
 
         except:
             self.mysqldb.rollback()

@@ -8,7 +8,7 @@
                 <option>Home</option>
             </select>
 
-            <button class="edit">Edit</button>
+            <button @click="send_update_task" class="edit">Edit</button>
             <button class="save">Save</button>
         </div>
 
@@ -61,11 +61,12 @@
 </template>
 
 <script>
+import axios from "axios";
 import Timer from "@/components/Timer";
 
 export default {
     name: "Task",
-    props: ['task'],
+    props: ['task', 'ip'],
     data() {
         return {
             time: 5,
@@ -78,13 +79,16 @@ export default {
     methods: {
         paused(){
             this.status = true
+            this.task.timer = this.$refs.Timer.get_value()
+            this.send_update_task()
         },
         play(){
             this.status = false
         },
         wipe(){
             this.$refs.Timer.updateTime(-this.time+1)
-            this.time = 0
+            this.$refs.Timer.updateTime(this.task.interval-1)
+            this.time = this.task.interval
         },
         update_timer(n_time){
             if (n_time === 0) {
@@ -95,7 +99,49 @@ export default {
                 this.$refs.Timer.updateTime(n_time-1)
             }
             this.time = n_time
-        }
+        },
+        local_storage(mode, key, value = ''){
+            if (mode === 'set') {
+                if (key == "token") { this.token = value }
+
+                console.log("Set:" , key, "|", value)
+                localStorage.setItem(key, value)
+            }
+            else {
+                return localStorage.getItem(key)
+            }
+        },
+        send_update_task(){
+            let token = this.local_storage('get','token')
+            if (token === null){
+                alert("Вы не авторизованы!")
+            }
+            else {
+                if (this.task.id === 0) { alert("Вы не выбрали задачу!") }
+                else {
+                    axios
+                        .post("http://" + this.ip + "/updatetask", {
+                            'id': this.task.id,
+                            'task': this.task.task,
+                            'description': this.task.des,
+                            'interval': this.task.interval,
+                            'count': this.task.count,
+                            'timer': this.task.timer,
+                            "token": token
+                        })
+                        .then((response) => {
+                            if (response.data.status === "success") {
+                                console.log(response.data);
+                            } else {
+                                console.log(response.data);
+                            }
+                        })
+                        .catch((error) => {
+                            console.log(error);
+                        });
+                }
+            }
+        },
     }
 }
 </script>

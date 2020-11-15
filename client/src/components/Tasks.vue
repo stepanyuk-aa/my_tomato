@@ -21,7 +21,7 @@
         </div>
 
         <div class="column-r">
-            <Task :task="choose_task" ref="Task"/>
+            <Task :task="choose_task" :ip="ip" ref="Task"/>
         </div>
     </div>
 </template>
@@ -31,7 +31,7 @@ import Task from "@/components/Task";
 
 export default {
     name: "Tasks",
-    props: ['tasks'],
+    props: ['tasks', 'ip'],
     data() {
         return {
             add_tasks: true,

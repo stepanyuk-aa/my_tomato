@@ -331,6 +331,10 @@ export default {
             if(this.value<0){
                 this.$emit('finish')
             }
+        },
+
+        get_value(){
+            return this.value
         }
     },
     watch: {

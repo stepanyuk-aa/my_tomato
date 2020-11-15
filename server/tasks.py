@@ -16,7 +16,9 @@ def get_login(token):
         }
     )[0][1]
 
-    return login
+    if type(login) == type(""):
+        return login
+    else: return False
 
 def add_task(data):
     db = db_connect.ohMysql(
@@ -56,3 +58,32 @@ def get_tasks(token):
         }
     )
     return tasks
+
+def update_task(data):
+    login = get_login(data['token'])
+    if login == False: return "Error"
+
+    db = db_connect.ohMysql(
+        ip='192.168.1.10',
+        user='admin',
+        password="",
+        current_db='myPomidoro'
+    )
+
+    for key in ('task', 'description', 'interval', 'count', 'timer'):
+        res = db.update(
+            'tasks',
+            {
+                'set': {
+                    'key': key,
+                    'value': data[key]
+                },
+                'if': {
+                    'key': 'id',
+                    'value': data['id']
+                }
+            }
+        )
+
+        print(res)
+        # return res

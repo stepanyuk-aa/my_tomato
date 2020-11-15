@@ -6,8 +6,8 @@
         <UserConfig v-show=show_userConfig />
         <Registration @to_login="to_login" v-show=show_registration :ip=ip />
         <Settings v-show="show_settings"/>
-        <Tasks v-show="show_tasks" @Tasks="Tasks" :tasks="tasks" />
-        <AddTask @Close_Add_Task="Close_Add_Task" class="modal" v-show="show_add_task" @close="showModal = false" :ip=ip></AddTask>
+        <Tasks v-show="show_tasks" @Tasks="Tasks" :tasks="tasks" :ip=ip />
+        <AddTask @Close_Add_Task="Close_Add_Task" class="modal" v-show="show_add_task" @close="showModal = false" :ip=ip ></AddTask>
 
         <button @click="local_storage('get', 'token')"></button>
     </div>
