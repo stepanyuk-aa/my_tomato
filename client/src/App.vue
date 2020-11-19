@@ -6,7 +6,7 @@
         <UserConfig v-show=show_userConfig />
         <Registration @to_login="to_login" v-show=show_registration :ip=ip />
         <Settings v-show="show_settings"/>
-        <Tasks v-show="show_tasks" @Tasks="Tasks" :tasks="tasks" :ip=ip />
+        <Tasks v-show="show_tasks" @Tasks="Tasks" @updateTasks="f_update_tasks" :tasks="tasks" :ip=ip />
         <AddTask @Close_Add_Task="Close_Add_Task" class="modal" v-show="show_add_task" @close="showModal = false" :ip=ip ></AddTask>
 
         <button @click="local_storage('get', 'token')"></button>
@@ -75,11 +75,14 @@ export default {
       },
       Close_Add_Task(){
           this.show_add_task = false;
+          this.get_tasks()
       },
       login_goto(data){
           if (data.go === "tasks"){
               this.show_login = false
+              this.get_tasks()
               this.show_tasks = true
+
           }
           else {
               this.show_login = false
@@ -104,7 +107,11 @@ export default {
       Tasks(data){
               if (data.add_tasks === true) { this.show_add_task = true}
       },
+      f_update_tasks(){
+          this.get_tasks()
+      },
       get_tasks(){
+          console.log("get_tasks")
           let token = this.local_storage('get','token')
           if (token === null){
               alert("Вы не авторизованы!")

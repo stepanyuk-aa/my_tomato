@@ -124,7 +124,7 @@ export default {
                             'id': this.task.id,
                             'task': this.task.task,
                             'description': this.task.des,
-                            'interval': this.task.interval,
+                            'intervall': this.task.interval,
                             'count': this.task.count,
                             'timer': this.task.timer,
                             "token": token

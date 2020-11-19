@@ -25,7 +25,7 @@ class ohMysql(object):
                     VALUES (%s, %s, %s, %s)"""
             if (table == 'tasks'):
                 table = """INSERT INTO tasks 
-                    (`task`, `description`, `interval`, `count`, `timer`, `user`)
+                    (`task`, `description`, `intervall`, `count`, `timer`, `user`)
                     VALUES (%s, %s, %s, %s, %s, %s)"""
 
             self.mycursor.execute(table,values)
@@ -75,6 +75,7 @@ class ohMysql(object):
         )
         """
         try:
+
             sql_q = "UPDATE %s SET %s = '%s' WHERE %s = '%s'" % \
                     (table, values['set']['key'],
                      values['set']['value'],
@@ -82,10 +83,9 @@ class ohMysql(object):
                      values['if']['value']
                      )
 
-
             self.mycursor.execute(sql_q)
             self.mysqldb.commit()
-            print('Update inserted successfully...', values)
+            print('Update successfully...')
 
         except:
             self.mysqldb.rollback()

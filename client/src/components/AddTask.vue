@@ -20,8 +20,6 @@
                 <p>Повторений:</p>
                 <input v-model="repeat" class="input_add_task" type="text">
             </div>
-
-
         </div>
         <div class="task_buttons">
             <button class="Close btn" @click="close">Close</button>
@@ -76,7 +74,7 @@ export default {
                         .post("http://" + this.ip + "/addtask", {
                             'task': this.task,
                             'description': this.description,
-                            'interval': this.interval,
+                            'intervall': this.interval,
                             "repeat": this.repeat,
                             "token": token,
                         })
@@ -93,10 +91,11 @@ export default {
 
                     this.task = "";
                     this.description = "";
-                    this.interval = "";
+                    this.intervall = "";
                     this.repeat = "";
                 }
             }
+            this.$emit('Close_Add_Task')
         },
     }
 }

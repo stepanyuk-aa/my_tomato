@@ -32,7 +32,7 @@ def add_task(data):
     ## (task, description, interval, count/repeat, timer, user)
     dat = db.create(
         'tasks',
-        (data['task'], data['description'], int(data['interval']), int(data['repeat']), 0, login)
+        (data['task'], data['description'], int(data['intervall']), int(data['repeat']), 0, login)
     )
 
     if dat == None:
@@ -57,7 +57,14 @@ def get_tasks(token):
             'value': login
         }
     )
-    return tasks
+
+    tmp = []
+    for w in tasks:
+        if w[7] != 2: tmp.append(w); print(w[7])
+
+    for w in tmp: print(w)
+
+    return tmp
 
 def update_task(data):
     login = get_login(data['token'])
@@ -70,7 +77,7 @@ def update_task(data):
         current_db='myPomidoro'
     )
 
-    for key in ('task', 'description', 'interval', 'count', 'timer'):
+    for key in ('task', 'description', 'intervall', 'count', 'timer'):
         res = db.update(
             'tasks',
             {
@@ -84,6 +91,32 @@ def update_task(data):
                 }
             }
         )
-
-        print(res)
         # return res
+
+def change_status(data):
+    login = get_login(data['token'])
+    if login == False: return "Error"
+
+    db = db_connect.ohMysql(
+        ip='192.168.1.10',
+        user='admin',
+        password="",
+        current_db='myPomidoro'
+    )
+
+    res = db.update(
+        'tasks',
+        {
+            'set': {
+                'key': 'status',
+                'value': data['status']
+            },
+            'if': {
+                'key': 'id',
+                'value': data['id']
+            }
+        }
+    )
+
+    # return res
+

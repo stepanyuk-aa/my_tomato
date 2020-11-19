@@ -73,5 +73,13 @@ def update_task():
 
     return jsonify(req)
 
+@app.route('/chagestatus', methods=['POST'])
+def chages_tatus():
+    req = request.get_json()
+
+    res = tasks.change_status(req)
+
+    return jsonify(req)
+
 if __name__ == '__main__':
     app.run(host="192.168.1.106")

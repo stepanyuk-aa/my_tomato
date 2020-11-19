@@ -1,10 +1,11 @@
 <template>
-<div class="singl_task" @click="send">
-    <div class="bt_singl_task bt_check"></div>
+<div class="singl_task">
+    <div class="bt_singl_task bt_check" @click="f_finish"></div>
     <input class="in_singl_task" type="text" v-model="task[1]">
     <select class="sel_singl_task">
     </select>
-    <button class="bt_singl_task">{{task[4]}}</button>
+    <button class="bt_singl_task" @click="send">{{task[4]}}</button>
+    <div class="bt_singl_task bt_del" @click="f_delete"></div>
 </div>
 </template>
 
@@ -22,7 +23,23 @@ export default {
                 count: this.task[4],
                 timer: this.task[5]
             })
-        }
+        },
+        f_finish(){
+            if (confirm("Вы уверены?")) {
+                this.$emit('chage_status', {
+                    id: this.task[0],
+                    status: "1"
+                })
+            }
+        },
+        f_delete(){
+            if (confirm("Вы уверены?")){
+                this.$emit('chage_status', {
+                    id: this.task[0],
+                    status: "2"
+                })
+            }
+        },
     },
 
 }
@@ -52,6 +69,12 @@ export default {
         width: 5%;
         height: 25px;
         background: url('../img/check_mark.svg') no-repeat;
+    }
+
+    .bt_del {
+        width: 5%;
+        height: 25px;
+        background: url('../img/trash.svg') no-repeat;
     }
 
     .in_singl_task {
