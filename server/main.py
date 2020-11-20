@@ -81,5 +81,13 @@ def chages_tatus():
 
     return jsonify(req)
 
+@app.route('/getgroups', methods=['POST'])
+def get_groups():
+    req = request.get_json()
+
+    res = tasks.get_groups(req['token'])
+
+    return jsonify({'groups':res})
+
 if __name__ == '__main__':
     app.run(host="192.168.1.106")

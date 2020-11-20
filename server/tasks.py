@@ -29,10 +29,11 @@ def add_task(data):
     )
     login = get_login(data['token'])
 
+    print(data)
     ## (task, description, interval, count/repeat, timer, user)
     dat = db.create(
         'tasks',
-        (data['task'], data['description'], int(data['intervall']), int(data['repeat']), 0, login)
+        (data['task'], data['description'], int(data['intervall']), int(data['repeat']), 0, login, 0, data['group'])
     )
 
     if dat == None:
@@ -60,9 +61,7 @@ def get_tasks(token):
 
     tmp = []
     for w in tasks:
-        if w[7] != 2: tmp.append(w); print(w[7])
-
-    for w in tmp: print(w)
+        if w[7] != 2: tmp.append(w);
 
     return tmp
 
@@ -120,3 +119,22 @@ def change_status(data):
 
     # return res
 
+def get_groups(token):
+    login = get_login(token)
+    if login == False: return "Error"
+
+    db = db_connect.ohMysql(
+        ip='192.168.1.10',
+        user='admin',
+        password="",
+        current_db='myPomidoro'
+    )
+
+    tasks = get_tasks(token)
+
+    groups = []
+    for w in tasks:
+        groups.append(w[-1])
+    groups = list(set(groups))
+
+    return groups

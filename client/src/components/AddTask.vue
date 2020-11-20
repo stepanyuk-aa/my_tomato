@@ -1,7 +1,8 @@
 <template>
     <div class="modal">
         <div class="task_title">
-            <h1>Добавить задание {{ip}} </h1>
+            <h1>Добавить задание </h1>
+            <hr>
         </div>
         <div class="task_body">
             <div class="row">
@@ -11,6 +12,14 @@
             <div class="row">
                 <p>Описание</p>
                 <input v-model="description" class="input_add_task" type="textarea">
+            </div>
+            <div class="row">
+                <p>Тип</p>
+
+                <div class="row_group">
+                    <input v-model="group" class="input_new_group" type="textarea">
+                    <SelectGroup v-model="group" :groups="groups"></SelectGroup>
+                </div>
             </div>
             <div class="row">
                 <p>Интервал:</p>
@@ -30,9 +39,11 @@
 
 <script>
 import axios from "axios";
+import SelectGroup from "@/components/SelectGroup";
 
 export default {
     name: "AddTask",
+    components: {SelectGroup},
     props: ['ip'],
     data() {
         return {
@@ -41,6 +52,8 @@ export default {
             description: "",
             interval: "",
             repeat: "",
+            group: "",
+            groups: [],
         }
     },
     methods: {
@@ -57,6 +70,24 @@ export default {
             }
             else {
                 return localStorage.getItem(key)
+            }
+        },
+        get_groups(){
+            let token = this.local_storage('get','token')
+            if (token === null){
+                alert("Вы не авторизованы!")
+            }
+            else {
+                axios
+                    .post("http://" + this.ip + "/getgroups", {
+                        "token": token,
+                    })
+                    .then((response) => {
+                        this.groups = response.data.groups
+                    })
+                    .catch((error) => {
+                        console.log(error);
+                    });
             }
         },
         send_task(){
@@ -76,6 +107,7 @@ export default {
                             'description': this.description,
                             'intervall': this.interval,
                             "repeat": this.repeat,
+                            "group": this.group,
                             "token": token,
                         })
                         .then((response) => {
@@ -123,9 +155,23 @@ export default {
         justify-content: space-between;
         align-items: center;
     }
-
+    .row_group {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        height: 90%;
+        margin-left: 24%;
+    }
     .input_add_task {
         width: 60%;
+        height: 50%;
+        margin-left: 10%;
+        border-radius: 10px;
+    }
+    .input_new_group {
+        text-align: center;
+        width: 40%;
         height: 50%;
         margin-left: 10%;
         border-radius: 10px;

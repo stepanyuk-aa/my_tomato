@@ -25,8 +25,8 @@ class ohMysql(object):
                     VALUES (%s, %s, %s, %s)"""
             if (table == 'tasks'):
                 table = """INSERT INTO tasks 
-                    (`task`, `description`, `intervall`, `count`, `timer`, `user`)
-                    VALUES (%s, %s, %s, %s, %s, %s)"""
+                    (`task`, `description`, `intervall`, `count`, `timer`, `user`, `status`, `group`)
+                    VALUES (%s, %s, %s, %s, %s, %s, %s, %s)"""
 
             self.mycursor.execute(table,values)
             self.mysqldb.commit()
