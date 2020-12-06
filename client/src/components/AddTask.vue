@@ -173,7 +173,7 @@ export default {
         text-align: center;
         width: 40%;
         height: 50%;
-        margin-left: 10%;
+        margin-left: 14%;
         border-radius: 10px;
     }
     .task_buttons {

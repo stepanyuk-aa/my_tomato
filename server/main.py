@@ -8,7 +8,7 @@ from flask import request
 from flask_cors import CORS
 from flask import jsonify
 
-ip = '192.168.1.111'
+ip = '192.168.1.10'
 user = 'admin'
 password = ""
 db_name = 'myPomidoro'
@@ -32,6 +32,12 @@ def f_login():
         check = {'status':'error'}
 
     return jsonify(check)
+
+@app.route('/test', methods=['POST', 'GET'])
+def test():
+    print(request.get_json())
+
+    return jsonify(request.get_json())
 
 @app.route('/registration', methods=['POST', 'GET'])
 def f_registration():
@@ -61,7 +67,6 @@ def add_task():
 @app.route('/gettasks', methods=['POST'])
 def get_tasks():
     token = request.get_json()['token']
-
     return jsonify(tasks.get_tasks(token))
 
 
@@ -90,4 +95,4 @@ def get_groups():
     return jsonify({'groups':res})
 
 if __name__ == '__main__':
-    app.run(host="192.168.1.106")
+    app.run(host="192.168.1.105")

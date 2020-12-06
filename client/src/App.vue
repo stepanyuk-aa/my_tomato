@@ -6,7 +6,7 @@
         <UserConfig v-show=show_userConfig />
         <Registration @to_login="to_login" v-show=show_registration :ip=ip />
         <Settings v-show="show_settings"/>
-        <Tasks v-show="show_tasks" @Tasks="Tasks" @updateTasks="f_update_tasks" :tasks="tasks" :ip=ip />
+        <Tasks   ref="Tasks" v-show="show_tasks" @Tasks="Tasks" @updateTasks="f_update_tasks" :tasks="tasks" :ip=ip />
         <AddTask ref="AddTask" @Close_Add_Task="Close_Add_Task" class="modal" v-show="show_add_task" @close="showModal = false" :ip=ip ></AddTask>
 
         <button @click="local_storage('get', 'token')"></button>
@@ -68,6 +68,7 @@ export default {
           this.show_tasks = data.show_tasks
           if (this.show_tasks === true){
             this.get_tasks();
+            this.$refs.Tasks.get_groups()
           }
 
           this.show_add_task = data.show_add_task
@@ -88,7 +89,7 @@ export default {
               this.show_login = false
               this.get_tasks()
               this.show_tasks = true
-
+              this.$refs.Tasks.get_groups()
           }
           else {
               this.show_login = false

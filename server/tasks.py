@@ -14,11 +14,11 @@ def get_login(token):
             'if': '=',
             'value': token
         }
-    )[0][1]
+    )
 
-    if type(login) == type(""):
-        return login
-    else: return False
+    if login == []:
+        return False
+    else: return login[0][1]
 
 def add_task(data):
     db = db_connect.ohMysql(
@@ -49,6 +49,8 @@ def get_tasks(token):
         current_db='myPomidoro'
     )
     login = get_login(token)
+
+    if(login == False): return False
 
     tasks = db.read(
         'tasks',

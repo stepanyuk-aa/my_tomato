@@ -2,6 +2,7 @@ import random
 import db_connect
 
 def check(loging_data):
+    print(loging_data)
     if loging_data['password'] == get_password(loging_data['login']):
         token = gen_token()
         add_session(loging_data['login'], token)
@@ -24,8 +25,10 @@ def get_password(login):
             'value':login
         }
             )
-
-    return dat[0][2]
+    if dat:
+        return dat[0][2]
+    else:
+        return False
 
 def add_session(login, token):
     db = db_connect.ohMysql(

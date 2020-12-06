@@ -2,8 +2,6 @@
 <div class="singl_task">
     <div class="bt_singl_task bt_check" @click="f_finish"></div>
     <input class="in_singl_task" type="text" v-model="task[1]">
-    <select class="sel_singl_task">
-    </select>
     <button class="bt_singl_task" @click="send">{{task[4]}}</button>
     <div class="bt_singl_task bt_del" @click="f_delete"></div>
 </div>

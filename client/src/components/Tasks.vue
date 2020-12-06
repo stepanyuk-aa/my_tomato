@@ -2,18 +2,14 @@
     <div class="main_tasks">
         <div class="column">
             <div class="group">
-                <select class="select_group">
-                    <option>All</option>
-                    <option>Work</option>
-                    <option>Home</option>
-                </select>
+                <SelectGroup id="sg"  v-model="group" :groups="groups"></SelectGroup>
             </div>
+
             <div class="tasks">
                 <SingleTask
-                    v-for="task in tasks"
+                    v-for="task in group_tasks"
                     v-bind:key="task[0]"
                     v-bind:task="task"
-
                     @chage_status="f_chage_status"
                 />
             </div>
@@ -28,6 +24,7 @@
 <script>
 import SingleTask from "@/components/SingleTask";
 import Task from "@/components/Task";
+import SelectGroup from "@/components/SelectGroup";
 import axios from "axios";
 
 export default {
@@ -43,12 +40,20 @@ export default {
                 interval: 0,
                 count: 0,
                 timer: "",
+                group: "",
             },
+            group: "",
         }
     },
     components: {
         SingleTask,
         Task,
+        SelectGroup,
+    },
+    computed: {
+        group_tasks: function (){
+            return this.tasks.filter(task => task[8] == this.group);
+        }
     },
     methods: {
         fun_add_task(){
@@ -103,6 +108,24 @@ export default {
                 add_tasks: this.add_tasks,
             })
         },
+        get_groups(){
+            let token = this.local_storage('get','token')
+            if (token === null){
+                alert("Вы не авторизованы!")
+            }
+            else {
+                axios
+                    .post("http://" + this.ip + "/getgroups", {
+                        "token": token,
+                    })
+                    .then((response) => {
+                        this.groups = response.data.groups
+                    })
+                    .catch((error) => {
+                        console.log(error);
+                    });
+            }
+        },
         local_storage(mode, key, value = ''){
             if (mode === 'set') {
                 if (key == "token") { this.token = value }
@@ -153,12 +176,10 @@ export default {
         justify-content: center;
         align-items: center;
     }
-
-    .select_group {
-        width: 95%;
+    #sg.root_select {
+        width: 100%;
         height: 50%;
         border-radius: 100px;
-        padding-left: 3%;
     }
 
     .tasks {
